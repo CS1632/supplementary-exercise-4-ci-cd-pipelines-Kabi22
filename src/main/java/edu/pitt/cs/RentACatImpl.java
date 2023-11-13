@@ -18,12 +18,15 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public boolean returnCat(int id) {
-		// TODO
-		if(catExists(id) && !catAvailable(id)){
-			return true;
-		}
-
+		for (Cat c : cats){
+			if (c.getId() == id && !catAvailable(c.getId()))
+			{
+				c.returnCat();
+				return true; 
+			}
+		} 
 		return false;
+
 	}
 
 	/**
@@ -37,10 +40,13 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public boolean rentCat(int id) {
-		// TODO
-		if(catExists(id) && catAvailable(id)){
-			return true;
-		}
+		for (Cat c : cats){
+			if (c.getId() == id && catAvailable(c.getId()))
+			{
+				c.rentCat();
+				return true; 
+			}
+		} 
 		return false;
 	}
 
@@ -65,7 +71,7 @@ public class RentACatImpl implements RentACat {
 			// of the argument, then we have a match and
 			// can thus return a reference to that cat
 			if (!c.getRented()) {
-				str = str +"ID "+ c.getId() + ". " + c.getName() + "\n";
+				str = str + c + "\n";
 			}
 		}
 		return str;
@@ -81,7 +87,6 @@ public class RentACatImpl implements RentACat {
 	 */
 
 	public boolean catExists(int id) {
-		// TODO
 		if (cats == null || cats.size() == 0) {
 			return false;
 		}

@@ -44,17 +44,19 @@ public class RentACatTest {
 		c1 = Mockito.mock(Cat.class);
 		Mockito.when(c1.getId()).thenReturn(1);
 		Mockito.when(c1.getName()).thenReturn("Jennyanydots");
-		
+		Mockito.when(c1.toString()).thenReturn("ID 1. Jennyanydots");		
 		// 3. Create an unrented Cat with ID 2 and name "Old Deuteronomy", assign to c2
 		// TODO: Fill in
 		c2 = Mockito.mock(Cat.class);
 		Mockito.when(c2.getId()).thenReturn(2);
 		Mockito.when(c2.getName()).thenReturn("Old Deuteronomy");
+		Mockito.when(c2.toString()).thenReturn("ID 2. Old Deuteronomy");		
 		// 4. Create an unrented Cat with ID 3 and name "Mistoffelees", assign to c3
 		// TODO: Fill in
 		c3 = Mockito.mock(Cat.class);
 		Mockito.when(c3.getId()).thenReturn(3);
 		Mockito.when(c3.getName()).thenReturn("Mistoffelees");
+		Mockito.when(c3.toString()).thenReturn("ID 3. Mistoffelees");		
 	}
 
 	@After
@@ -283,7 +285,6 @@ public class RentACatTest {
 
 	@Test
 	public void testReturnCatFailureNumCats0() {
-		// TODO
 		assertEquals(false, r.returnCat(2));
 	}
 
@@ -306,7 +307,6 @@ public class RentACatTest {
 
 	@Test
 	public void testReturnCatNumCats3() {
-		// TODO
 		r.addCat(c1);
 		r.addCat(c2);
 		r.addCat(c3);
